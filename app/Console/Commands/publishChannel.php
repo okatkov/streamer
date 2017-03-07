@@ -45,7 +45,7 @@ class publishChannel extends Command
         if ($channel_id = $this->option('channel_id')) {
             $this->info("Channel $channel_id");
 
-            $channel =  DB::table('channels')->where('id',$channel_id)->get();
+            $channel =  DB::table('channels')->where('id',$channel_id)->first();
             if (file_exists('/lib/systemd/system/ch_'.$channel->id.'.service'))
             {
                 $this->warn('Channel already exist');
